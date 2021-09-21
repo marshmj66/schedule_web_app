@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <i class="material-icons" id="login">account_circle</i>
+    <form action="/" method="post" name="login_form">
+        <p class="login" id="login">username</p>
+        <input class="login" id="login" name="un" type="text">
+
+        <p class="login" id="login">password</p>
+        <input class="login" id="login" name="pwd" type="text">
+        <br>
+        <input class="login" id="login" type="submit" value="login">
+
+    </form>
+    <h1>Stay up-to-date with your activites</h1>
+
+{% endblock %}
+
+{% block body %}
+    {% if info != 'wrong user information' and info != [] and info != None %}
+        <p>welcome back {{info}}</p>
+        <p>Please enter your day below {{info}}</p>
+<table>
+    <tr>
+        <th>Event number</th>
+        <th>Event_name</th>
+        <th>Description</th>
+        <th>Time</th>
+        <th>Date</th>
+        <th>Completion</th>
+        <th>Mark if Task Completed</th>
+    </tr>
+    {% for e in event %}
+    <tr>
+        <td>{{e[0]}}</td>
+        <td>{{e[1]}}</td>
+        <td>{{e[2]}}</td>
+        <td>{{e[3]}}</td>
+        <td>{{e[4]}}</td>
+        {% if e[5] == 0 %}
+            <td>Still to be done</td>
+        {% elif e[5] == 1 %}
+            <td>Task Completed</td>
+        {% endif %}
+
+        {% if e[5] == 0 %}
+            <td>
+                <form action="/" method="get" name="completion_form">
+                    <input type="checkbox" value="{{e[0]}}" id="box" name="check">
+                    <label for="box">Done</label>
+                    <input type="submit" value="confirm" id="box_sender">
+                </form>
+            </td>
+        {% endif %}
+    {% endfor %}
+    </tr>
+</table>
+
+    {% elif info == 'wrong user information'%}
+        <p>{{info}}</p>
+    {% else %}
+        <p>please enter a valid login</p>
+    {% endif %}
+
+
+{% endblock %}
+

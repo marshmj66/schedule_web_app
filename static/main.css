@@ -1,0 +1,26 @@
+body {
+  margin-top: 10px;
+  background-color: lightyellow;
+  font-family: verdana;
+  font-size: 20px;
+}
+
+h1 {
+  color: red;
+  text-align: center;
+}
+
+#login{
+    position:relative;
+    left:450px; top:-10px;
+    color: darkblue;
+    font-size: 15px;
+    width: 30%;
+    box-sizing: border-box;
+
+}
+table, th, td{
+    border:5px solid black;
+    background-color: lightblue;
+    margin-table: right
+}
